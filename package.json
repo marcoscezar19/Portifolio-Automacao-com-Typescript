@@ -1,0 +1,28 @@
+{
+  "name": "assuntos-de-typescript",
+  "version": "1.0.0",
+  "description": "Nesse repositório esta salvo os códigos relacionados a TypeScript do curso Aponti",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcoscezar19/Assuntos-de-TypeScript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marcoscezar19/Assuntos-de-TypeScript/issues"
+  },
+  "homepage": "https://github.com/marcoscezar19/Assuntos-de-TypeScript#readme",
+  "devDependencies": {
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
