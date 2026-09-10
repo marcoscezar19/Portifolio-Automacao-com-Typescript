@@ -1,5 +1,5 @@
 //IMPORTANDO FUNÇÃO UTILITÁRIA DE AGUARDAR TEMPO (DELAY)
-import { aguardar } from "../utils/helpers";
+import { aguardar } from "../../utils/helpers";
 //SIMULANDO UMA API DE LOGIN
 function simularLogin (usuario:string, senha:string):Proimise<string>{
     return new Promise((resolve,reject) => {
