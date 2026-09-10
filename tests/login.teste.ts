@@ -8,3 +8,25 @@ function loginLento(usuario:string):Proimise<string>{
         },5000);
     })
 }
+
+test('Simular login usando fake timers ',async ()=>{
+    //LIGANDO A MAQUINA DO TEMPO HAHAHA!
+    vi.useFakeTimers();
+    console.log('⏳INICIANDO CENÁRIO DE TESTE ;D');
+
+    //CHAMANDO PRIMISE DE USUÁRIO SEM AWAIT AINDA
+    const promessaLogin = loginLento('Papaleguas');
+
+    //CONFIGURAR AVANÇO DE 5 SEGUNDOS
+    vi.advanceTimerByTime(5000);
+    
+    const resultado = await promessaLogin;
+
+    //VERIFICAR RESULTADO
+    expect(resultado).toBe('BEM-VINDO, Papaleguas!')
+
+    console.log('Sucesso! Teste realizado na velocidade da luz 💡');
+
+    //DESLIGANDO A MAQUINA DO TEMPO
+    vi.useRealTimers();
+})
