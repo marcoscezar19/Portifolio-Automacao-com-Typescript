@@ -14,11 +14,17 @@ function simularLogin (usuario:string, senha:string):Proimise<string>{
 async function executarCT() {
     console.log('⏳ INICIANDO CENÁRIO DE TESTE ;D');
     try{
-        console.log('passo 1: Abrindo tela de login...')
+        console.log('passo 1: Abrindo tela de login...');
         await aguardar(2000)
-        console.log('Passo 2: Inserindo credênciais...')
+        console.log('Passo 2: Inserindo credênciais...');
         await aguardar(3000)
         
-        const token = await simularLogin('admin','123456')
+        const token = await simularLogin('admin','123456');
+        console.log(`SUCESSO! USUÁRIO LOGADO  TOKEN RECEBIDO: ${token}\n`);
+    }catch(erro){
+        console.error(`FALHA NO TESTE: ${erro}\n`);
+    }finally{
+        console.log('Passo final: Fechando navegador e limpando dados.');
     }
 }
+executarCT();
