@@ -9,11 +9,10 @@ let alimento1:produto = {nome:'Feijão Kicaldo' , preço:9.50};
 let alimento2:produto = {nome:'Feijão marca menor' , preço:6.50};
 
 function verificarValor(produtoAtual: produto){
-    if (produtoAtual.preço<9.50) {
-        console.log(`✅ Produto em promoção: O alimento ${produtoAtual.nome} está mais barato que o normal`);
-    }else {
-        console.log(`O ${produtoAtual.nome} esta com valor normal de mercado atual: ${produtoAtual.preço}`);
-    }
+   const mensagem = produtoAtual.preço < 9.50
+   ? `✅ Produto em promoção: O produto ${produtoAtual.nome} está mais barato que o normal`
+   : `O ${produtoAtual.nome} está com valor normal do mercado atual: ${produtoAtual.preço}`;
+   console.log(mensagem);
 };
 verificarValor(alimento1);
 verificarValor(alimento2);
