@@ -4,7 +4,7 @@ import{test, expect, vi} from 'vitest';
 function loginLento(usuario:string):Proimise<string>{
     return new Promise((resolve)=>{
         setTimeout(()=>{
-            resolve(`BEM VINDO, ${usuario}!`);
+            resolve(`BEM-VINDO, ${usuario}!`);
         },5000);
     })
 }
@@ -18,7 +18,7 @@ test('Simular login usando fake timers ',async ()=>{
     const promessaLogin = loginLento('Papaleguas');
 
     //CONFIGURAR AVANÇO DE 5 SEGUNDOS
-    vi.advanceTimerByTime(5000);
+    vi.advanceTimersByTime(5000);
     
     const resultado = await promessaLogin;
 
