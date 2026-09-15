@@ -33,10 +33,10 @@ async function buscarPorId(id:number) {
     console.log(`Título do post ${id}:`, dados.title);
 }
 
-// GET /post/1/comment
+// GET /post/1/comments
 async function listarComent(postId:number){
-    console.log(`--- 3. GET /posts/1/comment ---`);
-    const res = await fetch(`${BASE_URL}/posts/${postId}/comment`);
+    console.log(`--- 3. GET /posts/1/comments ---`);
+    const res = await fetch(`${BASE_URL}/posts/${postId}/comments`);
     const dados: Coment[] = await res.json();
     console.log(`✅ Status: ${res.status}`);
     console.log(`O post ${postId} tem ${dados.length} comentários Ex: Email do primeiro comentário.`, dados[0].email);
