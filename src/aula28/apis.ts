@@ -23,8 +23,26 @@ async function listarPost(){
     console.log(`Lidos ${dados.length} posts. Ex: do primeiro:`,dados[0].title);
 }
 
-async function chamarReqs(){
-    listarPost();
+// GET /posts/1
+
+async function buscarPorId(id:number) {
+    console.log(`--- 2. GET /posts/1 ---`);
+    const res = await fetch(`${BASE_URL}/posts/${id}`);
+    const dados: Post = await res.json();
+    console.log(`✅ Status: ${res.status}`);
+    console.log(`Título do post ${id}:`, dados.title);
 }
 
+// GET /post/1/comment
+async function listarComent(postId:number){
+    console.log(`--- 3. GET /posts/1/comment ---`);
+    const res = await fetch(`${BASE_URL}/posts/${postId}/comment`);
+    const dados: Coment[] = await res.json();
+    console.log(`✅ Status: ${res.status}`);
+    console.log(`O post ${postId} tem ${dados.length} comentários Ex: Email do primeiro comentário.`, dados[0].email);
+}
+async function chamarReqs(){
+    listarPost();
+    buscarPorId(3);
+}
 chamarReqs();
