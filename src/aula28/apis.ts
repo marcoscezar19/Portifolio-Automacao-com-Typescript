@@ -21,4 +21,10 @@ async function listarPost(){
     const dados: Post[] = await res.json();
     console.log(`✅ Status: ${res.status}`);
     console.log(`Lidos ${dados.length} posts. Ex: do primeiro:`,dados[0].title);
-};
+}
+
+async function chamarReqs(){
+    listarPost();
+}
+
+chamarReqs();
