@@ -43,6 +43,8 @@ async function listarComent(postId:number){
 }
 async function chamarReqs(){
     listarPost();
-    buscarPorId(3);
+    buscarPorId(2);
+    listarComent(4);
+
 }
 chamarReqs();
