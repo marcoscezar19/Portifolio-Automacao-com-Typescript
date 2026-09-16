@@ -6,7 +6,7 @@ Explicar, em comentários, o fluxo assíncrono
 Criação de Testes Unitários*/
 
 const API_URL = "https://dummyjson.com" 
-//Definindo contratos de tipos
+//DEFININDO CONTRATO E TIPO
 
 type produto = {
     id: number;
@@ -28,3 +28,16 @@ function aplicarDescontoSimulado(preco: number): Promise<number> {4
         }, 500);
     }) 
 }
+//3. EXECUÇÃO DO FLUXO:
+async function executarFluxo() {
+    console.log("1. Buscando produtos na api..."); 
+    const produtos = await buscarProdutos();
+
+    const primeiroProduto = produtos[0];
+    console.log("2. Calculando desconto simulado...");
+    const precoComDesconto = await aplicarDescontoSimulado(primeiroProduto.price);
+
+    console.log(`Preço final com desconto de 10%: ${precoComDesconto}`);
+}
+
+executarFluxo();
