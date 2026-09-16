@@ -6,7 +6,7 @@ Explicar, em comentários, o fluxo assíncrono
 Criação de Testes Unitários*/
 
 const API_URL = "https://dummyjson.com" 
-//DEFININDO CONTRATO E TIPO
+//1. USO DE ARRAYS E OBJETOS (Contrato de Tipos)
 
 type produto = {
     id: number;
@@ -14,22 +14,33 @@ type produto = {
     price: number;
     category: string;
 };
-//1. FUNÇÃO COM FETCH E ASYNC/AWAIT
-async function buscarProdutos(): Promise<produto[]> {
+
+// 2. FUNÇÃO ASSÍNCRONA COM ASYNC/AWAIT
+export async function buscarProdutos(): Promise<produto[]> {
     const res = await fetch(`${API_URL}/products`);
     const dados = await res.json();
     return dados.products;
 };
-//2. SIMULAÇÃO DE PROMISE MANUAL
-function aplicarDescontoSimulado(preco: number): Promise<number> {4
+
+// 3. SIMULAÇÃO DE UMA PROMISE MANUAL
+export function aplicarDescontoSimulado(preco: number): Promise<number> {
     return new Promise((resolve) =>{
         setTimeout(() => {
             resolve(preco * 0.9); //apolica 10% de desconto após 500ms
         }, 500);
     }) 
 }
-//3. EXECUÇÃO DO FLUXO:
-async function executarFluxo() {
+/* 
+ * 4. EXPLICAÇÃO DO FLUXO ASSÍNCRONO:
+ * - A função 'executarFluxo' é marcada como 'async', permitindo o uso de 'await'.
+ * - Ao executar 'await buscarProdutos()', o JavaScript faz a requisição de rede e 
+ *   pausa a execução desta função sem travar a thread principal (Event Loop).
+ * - Quando a API responde com os produtos, o Event Loop retoma a função de onde parou.
+ * - Em seguida, 'await aplicarDescontoSimulado()' aguarda o temporizador de 500ms 
+ *   da Promise ser resolvido para então calcular e exibir o preço final.
+ */
+
+export async function executarFluxo() {
     console.log("1. Buscando produtos na api..."); 
     const produtos = await buscarProdutos();
 
