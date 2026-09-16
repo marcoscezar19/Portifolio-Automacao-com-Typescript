@@ -19,4 +19,4 @@ async function buscarProdutos(): Promise<produto[]> {
     const res = await fetch(`${API_URL}/products`);
     const dados = await res.json();
     return dados.products;
-};
+}; 
