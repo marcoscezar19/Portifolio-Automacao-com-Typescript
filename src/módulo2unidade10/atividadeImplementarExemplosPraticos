@@ -1,0 +1,22 @@
+/*Implementar exemplos práticos contendo:
+Uso de arrays e objetos
+Uma função assíncrona com async/await
+Simulação de uma Promise
+Explicar, em comentários, o fluxo assíncrono
+Criação de Testes Unitários*/
+
+const API_URL = "https://dummyjson.com" 
+//Definindo contratos de tipos
+
+type produto = {
+    id: number;
+    title: string;
+    price: number;
+    category: string;
+};
+//FUNÇÃO COM FETCH E ASYNC/AWAIT
+async function buscarProdutos(): Promise<produto[]> {
+    const res = await fetch(`${API_URL}/products`);
+    const dados = await res.json();
+    return dados.products;
+};
