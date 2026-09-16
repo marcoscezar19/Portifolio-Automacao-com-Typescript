@@ -14,9 +14,17 @@ type produto = {
     price: number;
     category: string;
 };
-//FUNÇÃO COM FETCH E ASYNC/AWAIT
+//1. FUNÇÃO COM FETCH E ASYNC/AWAIT
 async function buscarProdutos(): Promise<produto[]> {
     const res = await fetch(`${API_URL}/products`);
     const dados = await res.json();
     return dados.products;
-}; 
+};
+//2. SIMULAÇÃO DE PROMISE MANUAL
+function aplicarDescontoSimulado(preco: number): Promise<number> {4
+    return new Promise((resolve) =>{
+        setTimeout(() => {
+            resolve(preco * 0.9); //apolica 10% de desconto após 500ms
+        }, 500);
+    }) 
+}
