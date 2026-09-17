@@ -42,7 +42,7 @@ test('Metodo PUT para atualizar um novo post', async () =>{
     //Testar se o retorno é um objeto JSON
         const dados = await res.json();
         expect(dados).toHaveProperty('id');
-        expect(dados.title).toBe('MEU TÍTULO ATUALIZADO');
+        expect(dados.title).toBe('Meu antigo post');
         expect(dados.body).toBe('Conteúdo do meu antigo post');
 });
 
@@ -66,5 +66,14 @@ test('Metodo PATCH para atualizar um dado', async () =>{
         expect(dados).toHaveProperty('id');
         expect(dados.title).toBe('NOSSO antigo post');
        // expect(dados.body).toBe('Conteúdo do meu antigo post');
-        
+        // expect
+});
+
+//Testar metodo delete
+test('Metodo DELETE para DELETAR um POST', async () =>{
+    const res = await fetch(`${BASE_URL}/posts/1`, {
+        method: 'DELETE',
+    });
+    //Testar status code
+        expect(res.status).toBe(200);
 });
