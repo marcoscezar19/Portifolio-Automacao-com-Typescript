@@ -18,7 +18,7 @@ test('Metodo POST para criar um novo post', async () =>{
     //Testar status code
         expect(res.status).toBe(201)
     //Testar se o retorno é um objeto JSON
-        const dados = await res.jason();
+        const dados = await res.json();
         expect(dados).toHaveProperty('id');
         expect(dados.title).toBe('Meu novo post');
         expect(dados.body).toBe('Conteúdo do meu novo post');
