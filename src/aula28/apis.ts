@@ -41,6 +41,10 @@ async function listarComent(postId:number){
     console.log(`✅ Status: ${res.status}`);
     console.log(`O post ${postId} tem ${dados.length} comentários Ex: Email do primeiro comentário.`, dados[0].email);
 }
+
+
+
+
 async function chamarReqs(){
     listarPost();
     buscarPorId(2);
