@@ -42,7 +42,7 @@ test('Metodo PUT para atualizar um novo post', async () =>{
     //Testar se o retorno é um objeto JSON
         const dados = await res.json();
         expect(dados).toHaveProperty('id');
-        expect(dados.title).toBe('Meu antigo post');
+        expect(dados.title).toBe('MEU TÍTULO ATUALIZADO');
         expect(dados.body).toBe('Conteúdo do meu antigo post');
 });
 
