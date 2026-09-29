@@ -29,17 +29,19 @@ test.describe('ATO 1 - Validar carregamento e visibilidade de elementos', async 
 
 });
 
-test.describe('ATO 2 - Caminho feliz', async() => {
-    test('Validar acesso e redirecionar ao painel', async({page}) =>{
+test.describe('ATO 2 - Caminho feliz', async () => {
+    test('Validar acesso e redirecionar ao painel', async ({ page }) => {
         // navegar até a pagina de login
         await page.goto(`${BASE_URL}/login.html`);
         // Preencher campos utilizando o fill()
-        await page.fill('#email','admin@system.com');
-        await page.fill('#password','AdminPassword123');
+        await page.fill('#email', 'admin@system.com');
+        await page.fill('#password', 'AdminPassword123');
         // validar botão ativo
         await expect(page.locator('#loginBtn')).toBeEnabled();
         // Acao de clique no btn
-        await page.click('#loginBtn');    
+        await page.click('#loginBtn');
+        // Validar redirecionamento para a pagina /painel
+        await expect(page).toHaveURL(/painel\.html/);
     })
 })
 
