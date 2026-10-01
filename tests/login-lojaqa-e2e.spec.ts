@@ -54,3 +54,65 @@ test('verificar botão login desativado quando email incorreto)', async({page}) 
     // validar botão ativo
         await expect(page.locator('#loginBtn')).toBeDisabled();    
     })
+
+// criar bloco de test ato 3 para criar usuário de cliente e lojista e validar o formulario de cadastro e o login de cada um deles
+test.describe('Ato 3 - Entrar na pagina de criar usuário e validar campos', () => {
+
+    test('Criar usuário cliente validar campos', async ({ page }) => {
+        // navegar até a pagina de login
+        await page.goto(`${BASE_URL}/login.html`);
+        await page.getByRole('link', { name: 'Criar conta' }).click();
+
+        // validar campos
+        await expect(page.locator('#reg-name')).toBeVisible();
+        await expect(page.locator('#reg-email')).toBeVisible();
+        await expect(page.locator('#reg-password')).toBeVisible();
+        await expect(page.locator('#reg-role')).toBeVisible();
+        await expect(page.locator('#registerBtn')).toBeVisible();
+
+        // preencher campos utilizando o fill() criando usuário cliente
+        await page.fill('#reg-name', 'Maicão do QA');
+        await page.fill('#reg-email', 'maicaodoqa@gmail.com');
+        await page.fill('#reg-password', '123456789');
+        await page.getByLabel('QUERO ME CADASTRAR COMO').selectOption({ label: 'Cliente' });
+        await page.click('#registerBtn');
+
+        // Validar Login do Cliente
+        await page.goto(`${BASE_URL}/login.html`);
+        await page.fill('#login-email', 'maicaodoqa@gmail.com');
+        await page.fill('#login-password', '123456789');
+        await page.click('#loginBtn');
+    });
+
+    test('Criar usuário Lojista e validar campos', async ({ page }) => {
+        // navegar até a pagina de login
+        await page.goto(`${BASE_URL}/login.html`);
+        await page.getByRole('link', { name: 'Criar conta' }).click();
+
+        // selecionar opção de lojista
+        await page.getByLabel('QUERO ME CADASTRAR COMO').selectOption({ label: 'Lojista / vendedor' });
+
+        // validar campos
+        await expect(page.locator('#reg-name')).toBeVisible();
+        await expect(page.locator('#reg-email')).toBeVisible();
+        await expect(page.locator('#reg-password')).toBeVisible();
+        await expect(page.locator('#reg-role')).toBeVisible();
+        await expect(page.locator('#reg-store-name')).toBeVisible();
+        await expect(page.locator('#registerBtn')).toBeVisible();
+
+        // preencher campos utilizando o fill() criando usuário lojista
+        await page.fill('#reg-name', 'Maria Auxiliadora');
+        await page.fill('#reg-email', 'mariaauxiliadora@gmail.com');
+        await page.fill('#reg-password', '123456789');
+        await page.getByLabel('QUERO ME CADASTRAR COMO').selectOption({ label: 'Lojista / vendedor' });
+        await page.fill('#reg-store-name', 'A melhor do Brasil!');
+        await page.click('#registerBtn');
+
+        // Validar Login do Lojista
+        await page.goto(`${BASE_URL}/login.html`);
+        await page.fill('#login-email', 'mariaauxiliadora@gmail.com');
+        await page.fill('#login-password', '123456789');
+        await page.click('#loginBtn');
+    });
+    
+});
