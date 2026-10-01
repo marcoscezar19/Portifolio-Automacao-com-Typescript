@@ -44,4 +44,13 @@ test.describe('ATO 2 - Caminho feliz', async () => {
         await expect(page).toHaveURL(/painel\.html/);
     })
 })
+test('verificar botão login desativado quando email incorreto)', async({page}) => {
+//navegar até a pagina de login
+    await page.goto(`${BASE_URL}/login.html`)
 
+    //preencher campos utilizando o fill()
+    await page.fill('#email','email_sem_formato');
+    await page.fill('#password','123456789');
+    // validar botão ativo
+        await expect(page.locator('#loginBtn')).toBeDisabled();    
+    })
