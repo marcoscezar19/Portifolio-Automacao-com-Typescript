@@ -34,8 +34,8 @@ test.describe('ATO 2 - Caminho feliz', async () => {
         // navegar até a pagina de login
         await page.goto(`${BASE_URL}/login.html`);
         // Preencher campos utilizando o fill()
-        await page.fill('#email', 'admin@system.com');
-        await page.fill('#password', 'AdminPassword123');
+        await page.fill('#email', 'marckin@gmail.com');
+        await page.fill('#password', '123456789');
         // validar botão ativo
         await expect(page.locator('#loginBtn')).toBeEnabled();
         // Acao de clique no btn
