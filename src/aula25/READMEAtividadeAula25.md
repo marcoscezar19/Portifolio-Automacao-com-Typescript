@@ -21,14 +21,15 @@
 
 ## 2. Pirâmide de Testes do Sistema
 
-        /\
-       /  \     [ UI / Ponta a Ponta (E2E) ]
-      /    \    ~ 10% dos testes
-     /------\
-    /        \   [ Integração / Serviço / API ]
-   /          \  ~ 30% dos testes
-  /------------\
- /              \ [ Unidade / Componente ]
+/\
+  /  \     [ UI / Ponta a Ponta (E2E) ]
+ /    \    ~ 10% dos testes
+/------\
+/        \   [ Integração / Serviço / API ]
+/          \  ~ 30% dos testes
+/------------
+
+/              \ [ Unidade / Componente ]
 /________________\ ~ 60% dos testes
 
 ### Nível 1: Testes de Unidade (Base da Pirâmide)
